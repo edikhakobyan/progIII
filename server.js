@@ -3,9 +3,10 @@ grasseaterArr = [];
 HunterArr = [];
 waterArr = [];
 fireArr = [];
+matrix = []
 
 let random = require('./modules/random');
-function matrixGenerator(matrixSize, grass, grassEater, Hunter , water, fire) {
+function matrixGenerator(matrixSize, grass, grasseater, Hunter , water, fire) {
     for (let i = 0; i < matrixSize; i++) {
         matrix[i] = [];
         for (let o = 0; o < matrixSize; o++) {
@@ -17,7 +18,7 @@ function matrixGenerator(matrixSize, grass, grassEater, Hunter , water, fire) {
         let customY = Math.floor(random(matrixSize));
         matrix[customY][customX] = 1;
     }
-    for (let i = 0; i < grassEater; i++) {
+    for (let i = 0; i < grasseater; i++) {
         let customX = Math.floor(random(matrixSize));
         let customY = Math.floor(random(matrixSize));
         matrix[customY][customX] = 2;
@@ -70,8 +71,8 @@ function creatingObjects() {
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
             if (matrix[y][x] == 2) {
-                var grassEater = new GrassEater(x, y);
-                grassEaterArr.push(grassEater);
+                var grasseater = new GrassEater(x, y);
+                grasseaterArr.push(grasseater);
             } else if (matrix[y][x] == 1) {
                 var grass = new Grass(x, y);
                 grassArr.push(grass);
@@ -89,9 +90,9 @@ function game() {
             grassArr[i].mul();
         }
     }
-    if (grassEaterArr[0] !== undefined) {
-        for (var i in grassEaterArr) {
-            grassEaterArr[i].eat();
+    if (grasseaterArr[0] !== undefined) {
+        for (var i in grasseaterArr) {
+            grasseaterArr[i].eat();
         }
     }
     if (Hunter[0] !== undefined) {
